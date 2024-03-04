@@ -1,0 +1,119 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <!-- 
+        SITE APENAS PARA MOSTRAR QUE O ALARME ESTÁ DISPARANDO!!!
+         NÂO É UM ALGO FINALIZADO. NO FUTURO ESSE ALARME TERÁ QUE PEGAR ALGUMA
+         INFORMAÇÂO DO BANCO DE DADOS, PARA ASSIM, DISPARAR O ALARME CERTO.
+
+         LINKS UTEIS: 
+         https://www.youtube.com/watch?v=Y6u9e6tuPbE
+         https://www.youtube.com/watch?v=HYK9mPAQFd4
+
+
+         Diferença entre BOTS para Telegram e Whatsapp:
+         https://chat.openai.com/share/58be9bf7-ed77-4b28-a43d-9d4110f9b5d7
+    -->
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Disparar Alarme</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f4f4f4;
+                }
+
+                .container {
+                    max-width: 600px;
+                    margin: 50px auto;
+                    padding: 20px;
+                    background-color: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+
+                h1 {
+                    text-align: center;
+                    color: #333;
+                }
+
+                p {
+                    text-align: center;
+                    margin-top: 50px;
+                    color: #666;
+                }
+
+                button {
+                    display: block;
+                    width: 200px;
+                    margin-left: 860px;
+                    margin-top: 50px;
+                    padding: 10px 15px;
+                    background-color: #e0150e;
+                    color: #fff;
+                    font-size: 16px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    text-align: center
+                }
+
+                button:hover {
+                    background-color: #831313;
+                }
+
+                button:focus {
+                    outline: none;
+                }
+
+                .group-link {
+                    font-size: 14px;
+                    color: #666;
+                    margin-top: 50px;
+                    text-align: center
+                }
+
+                .group-link a {
+                    color: #007bff;
+                    text-decoration: none;
+                }
+
+                .group-link a:hover {
+                    text-decoration: underline;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Disparar Alarme</h1>
+            <p>Clique no botão abaixo para disparar o alarme no grupo:</p>
+            <button id="alarmButton">Disparar Alarme</button>
+
+            <h4 class="group-link">
+                <a href="https://t.me/+OmKxXKr7wz0xYWUx" target="_blank">Clique aqui</a>
+                para acessar o grupo.</h4>
+
+            <script>
+                document
+                    .getElementById('alarmButton') // Seleciona o botão com o ID "alarmButton"
+                    .addEventListener('click', () => { // Adiciona um ouvinte de evento para o evento de clique no botão
+                        fetch('/triggerAlarm', {method: 'POST'}) // Faz uma requisição POST para o endpoint '/triggerAlarm'
+                            .then(response => { // Quando a resposta da requisição for recebida
+                                if (response.ok) { // Verifica se a resposta foi bem-sucedida
+                                    alert('Alarme disparado com sucesso!'); // Exibe um alerta de sucesso se a resposta for bem-sucedida 
+                                } else {
+                                    alert('Falha ao disparar o alarme!'); // Exibe um alerta de falha se a resposta não for bem-sucedida
+                                }
+                            })
+                            .catch(error => { // Captura qualquer erro que ocorra durante a requisição
+                                console.error('Erro:', error); // Registra o erro no console do navegador
+                                alert('Erro ao disparar o alarme!'); // Exibe um alerta de erro
+                            });
+                    });
+            </script>
+        </body>
+    </html>
